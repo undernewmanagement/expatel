@@ -1,0 +1,90 @@
+{
+    "basePath": "/api/v1",
+    "swaggerVersion": "1.2",
+    "apiVersion": "1.0",
+    "resourcePath": "/messages",
+    "apis": [
+        {
+            "path": "/messages",
+            "operations": [
+                {
+                    "method": "POST",
+                    "summary": "Create a new message",
+                    "nickname": "store",
+                    "type": "Message",
+                    "parameters": [
+                        {
+                            "paramType": "form",
+                            "name": "content",
+                            "type": "string",
+                            "required": true,
+                            "description": "The content of the message"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "id",
+                            "type": "integer",
+                            "required": true,
+                            "description": "The id of the owning contact"
+                        }
+                    ],
+                    "notes": ""
+                }
+            ],
+            "produces": [
+                "application/json"
+            ]
+        },
+        {
+            "path": "/messages",
+            "description": "Operations on messages",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "List all the messages for a given contact",
+                    "nickname": "index",
+                    "type": "Message",
+                    "parameters": [
+                        {
+                            "paramType": "form",
+                            "name": "contact_id",
+                            "type": "integer",
+                            "required": true,
+                            "description": "The ID of the owning contact"
+                        }
+                    ],
+                    "notes": "Currently there is no pagination or filtering with additional query keys"
+                }
+            ],
+            "produces": [
+                "application/json"
+            ]
+        }
+    ],
+    "models": {
+        "Message": {
+            "id": "Message",
+            "properties": {
+                "id": {
+                    "description": "The ID of the message",
+                    "type": "integer"
+                },
+                "content": {
+                    "description": "The content of the message",
+                    "type": "string"
+                },
+                "is_read": {
+                    "description": "Has the message been read yet? True or false",
+                    "type": "boolean"
+                },
+                "contact_id": {
+                    "description": "The related contact this message belongs to",
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "content"
+            ]
+        }
+    }
+}

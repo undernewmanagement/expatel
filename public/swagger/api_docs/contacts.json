@@ -1,0 +1,141 @@
+{
+    "basePath": "/api/v1",
+    "swaggerVersion": "1.2",
+    "apiVersion": "1.0",
+    "resourcePath": "/contacts",
+    "apis": [
+        {
+            "path": "/contacts",
+            "operations": [
+                {
+                    "method": "POST",
+                    "summary": "Create a new contact",
+                    "nickname": "store",
+                    "type": "Contact",
+                    "parameters": [
+                        {
+                            "paramType": "form",
+                            "name": "name",
+                            "type": "string",
+                            "required": true,
+                            "description": "The name of the contact"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "number",
+                            "type": "string",
+                            "required": true,
+                            "description": "Phone number of the contact"
+                        }
+                    ],
+                    "notes": ""
+                }
+            ],
+            "produces": [
+                "application/json"
+            ]
+        },
+        {
+            "path": "/contacts",
+            "description": "Operations on contacts",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "List all the app users in the system",
+                    "nickname": "index",
+                    "type": "Contact",
+                    "notes": "Currently there is no pagination or filtering with additional query keys"
+                }
+            ],
+            "produces": [
+                "application/json"
+            ]
+        },
+        {
+            "path": "/contacts/{id}",
+            "description": "",
+            "operations": [
+                {
+                    "method": "GET",
+                    "summary": "Show a single app user by ID",
+                    "nickname": "showContact",
+                    "type": "Contact",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "name": "id",
+                            "type": "integer",
+                            "required": true,
+                            "description": "ID of the user to be fetched"
+                        }
+                    ],
+                    "notes": ""
+                },
+                {
+                    "method": "POST",
+                    "summary": "Update a contact",
+                    "nickname": "update",
+                    "type": "Contact",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "name": "id",
+                            "type": "integer",
+                            "required": true,
+                            "description": "ID of the contact to be updated"
+                        },
+                        {
+                            "paramType": "form",
+                            "name": "name",
+                            "type": "string",
+                            "description": "Name of the contact"
+                        }
+                    ],
+                    "notes": ""
+                },
+                {
+                    "method": "DELETE",
+                    "summary": "Delete an single contact by ID",
+                    "nickname": "destroy",
+                    "type": "Contact",
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "name": "id",
+                            "type": "integer",
+                            "required": true,
+                            "description": "ID of the contact to be deleted"
+                        }
+                    ],
+                    "notes": ""
+                }
+            ],
+            "produces": [
+                "application/json"
+            ]
+        }
+    ],
+    "models": {
+        "Contact": {
+            "id": "Contact",
+            "properties": {
+                "id": {
+                    "description": "The ID of the contact",
+                    "type": "integer"
+                },
+                "name": {
+                    "description": "The name of the contact",
+                    "type": "string"
+                },
+                "number": {
+                    "description": "The contacts phone number (freeform)",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "name",
+                "number"
+            ]
+        }
+    }
+}
